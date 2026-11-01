@@ -1,0 +1,7 @@
+{"id": "leave-annual", "question": "年假有几天？", "expected_doc": "leave-policy", "expected_terms": ["5 天", "10 天", "15 天"]}
+{"id": "leave-sick", "question": "病假超过一天需要什么材料？", "expected_doc": "leave-policy", "expected_terms": ["医院", "诊断证明"]}
+{"id": "expense-hotel", "question": "出差住宿标准是多少？", "expected_doc": "expense-policy", "expected_terms": ["500", "400", "300"]}
+{"id": "expense-refund", "question": "报销多久到账？", "expected_doc": "expense-policy", "expected_terms": ["5 个工作日", "到账"]}
+{"id": "oncall-p0", "question": "P0 故障多久响应？", "expected_doc": "oncall", "expected_terms": ["5 分钟", "15 分钟"]}
+{"id": "api-key", "question": "怎么创建 API Key？", "expected_doc": "product-faq", "expected_terms": ["控制台", "API Key"]}
+{"id": "math", "question": "128*3+16", "expected_tool": "calculate", "expected_terms": ["400"]}
