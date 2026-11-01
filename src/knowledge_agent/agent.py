@@ -58,7 +58,9 @@ class Agent:
         hits = self.kb.search(question, top_k=self.top_k)
         trace.append(TraceEvent("tool", f"search_docs hits={len(hits)}"))
         if not hits:
-            return Answer(text="知识库中没有找到相关内容。", tool_calls=["search_docs"], trace=trace)
+            return Answer(
+                text="知识库中没有找到相关内容。", tool_calls=["search_docs"], trace=trace
+            )
 
         best = hits[0]
         if any(word in question for word in _DETAIL_WORDS):

@@ -52,7 +52,9 @@ class KnowledgeBase:
                         text=text,
                     )
                 )
-        self.store.add(chunks, {document.id: document.title for document in self.documents.values()})
+        self.store.add(
+            chunks, {document.id: document.title for document in self.documents.values()}
+        )
         return len(chunks)
 
     def search(self, query: str, top_k: int = 5) -> list[SearchHit]:

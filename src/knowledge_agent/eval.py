@@ -52,7 +52,9 @@ def _doc_id(citation: str) -> str:
     return citation.split("#", 1)[0]
 
 
-def run_cases(cases: list[Case], kb: KnowledgeBase, agent: Agent, top_k: int = 5) -> list[CaseResult]:
+def run_cases(
+    cases: list[Case], kb: KnowledgeBase, agent: Agent, top_k: int = 5
+) -> list[CaseResult]:
     results: list[CaseResult] = []
     for case in cases:
         hits = kb.search(case.question, top_k=top_k)
@@ -104,19 +106,21 @@ def summarize(results: list[CaseResult]) -> dict:
             / max(1, sum(result.answer_hit is not None for result in results)),
             3,
         ),
-        "avg_term_coverage": round(
-            sum(result.term_coverage for result in results) / total, 3
-        )
+        "avg_term_coverage": round(sum(result.term_coverage for result in results) / total, 3)
         if total
         else 0.0,
     }
 
 
 def format_table(results: list[CaseResult]) -> str:
-    header = f"{'#':<3} {'retrieval':<10} {'answer':<8} {'terms':<6} {'tool':<6} {'PASS':<5} question"
+    header = (
+        f"{'#':<3} {'retrieval':<10} {'answer':<8} {'terms':<6} {'tool':<6} {'PASS':<5} question"
+    )
     lines = [header, "-" * len(header)]
     for index, result in enumerate(results, start=1):
-        retrieval = "-" if result.retrieval_hit is None else ("hit" if result.retrieval_hit else "miss")
+        retrieval = (
+            "-" if result.retrieval_hit is None else ("hit" if result.retrieval_hit else "miss")
+        )
         answer = "-" if result.answer_hit is None else ("hit" if result.answer_hit else "miss")
         lines.append(
             f"{index:<3} {retrieval:<10} {answer:<8} {result.term_coverage:<6.2f} "

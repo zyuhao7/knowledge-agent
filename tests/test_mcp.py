@@ -13,5 +13,10 @@ def test_mcp_server_exposes_agent_tools() -> None:
         return tools, result
 
     tools, result = asyncio.run(inspect())
-    assert {tool.name for tool in tools} == {"search_docs", "read_doc", "list_documents", "calculate"}
+    assert {tool.name for tool in tools} == {
+        "search_docs",
+        "read_doc",
+        "list_documents",
+        "calculate",
+    }
     assert "400" in str(result)

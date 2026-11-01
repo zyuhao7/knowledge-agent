@@ -74,7 +74,9 @@ class OpenAIEmbedder:
                 )
                 response.raise_for_status()
                 data = response.json()["data"]
-                vectors.extend(item["embedding"] for item in sorted(data, key=lambda item: item["index"]))
+                vectors.extend(
+                    item["embedding"] for item in sorted(data, key=lambda item: item["index"])
+                )
         if vectors:
             self.dim = len(vectors[0])
         return vectors

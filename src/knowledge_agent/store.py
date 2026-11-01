@@ -53,7 +53,9 @@ class VectorStore:
                 if not frequency:
                     continue
                 document_frequency = self.doc_freq.get(token, 0)
-                inverse = math.log(1 + (total - document_frequency + 0.5) / (document_frequency + 0.5))
+                inverse = math.log(
+                    1 + (total - document_frequency + 0.5) / (document_frequency + 0.5)
+                )
                 denominator = frequency + self.k1 * (1 - self.b + self.b * length / average)
                 score += inverse * frequency * (self.k1 + 1) / denominator
             scores.append(score)

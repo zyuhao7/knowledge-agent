@@ -44,7 +44,9 @@ class LLMClient:
             response.raise_for_status()
         except httpx.HTTPStatusError as error:
             body = error.response.text[:500]
-            raise LLMError(f"chat request failed: HTTP {error.response.status_code}: {body}") from error
+            raise LLMError(
+                f"chat request failed: HTTP {error.response.status_code}: {body}"
+            ) from error
         except httpx.HTTPError as error:
             raise LLMError(f"chat request failed: {error}") from error
 

@@ -74,7 +74,10 @@ class ToolRegistry:
                 parameters={
                     "type": "object",
                     "properties": {
-                        "query": {"type": "string", "description": "Natural-language search query."},
+                        "query": {
+                            "type": "string",
+                            "description": "Natural-language search query.",
+                        },
                         "top_k": {"type": "integer", "minimum": 1, "maximum": 10, "default": 5},
                     },
                     "required": ["query"],
